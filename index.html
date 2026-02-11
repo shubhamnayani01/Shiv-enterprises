@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiv Enterprises</title>
+
+<style>
+:root{
+    --primary:#064e3b;
+    --accent:#16a34a;
+    --bg:#f0fdf4;
+    --text:#052e16;
+    --muted:#4b5563;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family: system-ui, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#052e16,#064e3b);
+    color:white;
+    padding:60px 20px;
+    text-align:center;
+}
+.logo{
+    width:120px;
+    max-width:80%;
+    margin-bottom:15px;
+    border-radius:12px;
+}
+header h1{font-size:2.5rem;}
+header p{margin-top:10px;color:#d1fae5;}
+
+/* NAV */
+nav{
+    background:#052e16;
+    padding:12px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    position:sticky;
+    top:0;
+}
+nav a{
+    color:#ecfdf5;
+    text-decoration:none;
+    font-weight:500;
+}
+nav a:hover{color:#86efac;}
+
+/* SECTION */
+section{
+    padding:70px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+.center{text-align:center;}
+h2{font-size:2rem;margin-bottom:10px;}
+p.muted{color:var(--muted);}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+.card h3{margin-bottom:8px;}
+
+/* FLOATING BUTTONS */
+.fab{
+    position:fixed;
+    right:20px;
+    padding:14px 18px;
+    border-radius:30px;
+    color:white;
+    font-weight:600;
+    text-decoration:none;
+    box-shadow:0 8px 18px rgba(0,0,0,.3);
+    z-index:999;
+}
+.call{
+    bottom:90px;
+    background:#0f766e;
+}
+.whatsapp{
+    bottom:30px;
+    background:#22c55e;
+}
+
+/* FOOTER */
+footer{
+    background:#052e16;
+    color:#d1fae5;
+    text-align:center;
+    padding:20px;
+    margin-top:60px;
+    font-size:0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <!-- SAMPLE LOGO IMAGE FROM BROWSER -->
+    <img 
+        src="https://i.ibb.co/nMRjSxkd/Whats-App-Image-2026-02-11-at-7-22-29-PM.jpg/300x300.png?text=Shiv+Enterprises"
+        alt="Shiv Enterprises Logo"
+        class="logo"
+    >
+    <h1>Shiv Enterprises</h1>
+    <p>KYC • Ticket Booking • Bill Payments • Farmer Applications</p>
+</header>
+
+<nav>
+    <a href="#services">Services</a>
+    <a href="#agri">Agriculture</a>
+    <a href="#contact">Contact</a>
+    <a href="#location">Location</a>
+</nav>
+
+<section id="services">
+    <div class="center">
+        <h2>Digital Services</h2>
+        <p class="muted">All daily digital work handled properly</p>
+    </div>
+
+    <div class="services">
+        <div class="card">
+            <h3>KYC Services</h3>
+            <p>Aadhaar, PAN, and bank-related KYC services.</p>
+        </div>
+        <div class="card">
+            <h3>Ticket Booking</h3>
+            <p>Bus and travel ticket booking assistance.</p>
+        </div>
+        <div class="card">
+            <h3>Bill Payments</h3>
+            <p>Electricity, mobile, gas, DTH, and utility bills.</p>
+        </div>
+        <div class="card">
+            <h3>Online Forms</h3>
+            <p>Government schemes and online applications.</p>
+        </div>
+    </div>
+</section>
+
+<section id="agri">
+    <div class="center">
+        <h2>Agricultural Services</h2>
+        <p class="muted">ખેડૂતો માટેની ઓનલાઈન અરજી અને સહાય સેવાઓ</p>
+    </div>
+
+    <div class="services">
+        <div class="card">
+            <h3>i-Khedut Applications</h3>
+            <p>Assistance for fertilizer, equipment, and agriculture schemes.</p>
+        </div>
+        <div class="card">
+            <h3>Farmer Registrations</h3>
+            <p>Farmer ID, scheme registrations, and updates.</p>
+        </div>
+        <div class="card">
+            <h3>Subsidy Assistance</h3>
+            <p>Help with agriculture subsidy and benefit forms.</p>
+        </div>
+        <div class="card">
+            <h3>Land Record Services</h3>
+            <p>7/12 & 8A Land Record Extraction & Print Services.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="center">
+        <h2>Contact Details</h2>
+        <p class="muted">For any service, please contact or visit our shop</p>
+    </div>
+
+    <div class="services">
+        <div class="card">
+            <h3>Shop Holder</h3>
+            <p>Dhirendra Rameshchandra Nayani</p>
+        </div>
+        <div class="card">
+            <h3>Mobile Number</h3>
+            <p>8200373103</p>
+        </div>
+        <div class="card">
+            <h3>Email ID</h3>
+            <p>shiventerprises3103@gmail.com</p>
+        </div>
+    </div>
+</section>
+
+<section id="location">
+    <div class="center">
+        <h2>Shop Location</h2>
+        <p class="muted">Visit our shop during working hours</p>
+    </div>
+
+    <div class="services">
+        <div class="card">
+            <h3>Address</h3>
+            <p>Opp. Khambhla Road, MP chhabhaiya Complex, Kotda Jadodar, Nakhatrana, Kachchh 370605</p>
+            <p><strong>Timings:</strong> Monday – Friday | 8:00 AM to 8:00 PM</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>We provide application assistance only. Approval depends on government rules.</p>
+    <p>© 2026 Shiv Digital & Agricultural Services</p>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<a href="tel:8200373103" class="fab call">📞 Call</a>
+<a href="https://wa.me/918200373103" class="fab whatsapp">💬 WhatsApp</a>
+
+</body>
+</html>
