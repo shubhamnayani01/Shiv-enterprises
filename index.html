@@ -3,234 +3,394 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shiv Enterprises</title>
+<title>Shiv Enterprises | Premium Digital & Agricultural Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <style>
 :root{
-    --primary:#064e3b;
-    --accent:#16a34a;
-    --bg:#f0fdf4;
-    --text:#052e16;
-    --muted:#4b5563;
+  --primary:#6C63FF;
+  --secondary:#FF6584;
+  --bg:linear-gradient(135deg,#fdfbfb,#ebedff);
+  --glass:rgba(255,255,255,0.5);
+  --text-dark:#1a1a1a;
+  --text-light:#555;
 }
+.logo-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-box img{
+  height:45px;
+  width:auto;
+}
+
 
 *{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text-dark);overflow-x:hidden;transition:background .5s;}
 
-body{
-    font-family: system-ui, sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.6;
-}
+.loader{position:fixed;inset:0;background:#fff;display:flex;justify-content:center;align-items:center;z-index:9999;}
+.loader div{width:50px;height:50px;border:4px solid var(--primary);border-top:4px solid transparent;border-radius:50%;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
 
-/* HEADER */
-header{
-    background:linear-gradient(135deg,#052e16,#064e3b);
-    color:white;
-    padding:60px 20px;
-    text-align:center;
-}
-.logo{
-    width:120px;
-    max-width:80%;
-    margin-bottom:15px;
-    border-radius:12px;
-}
-header h1{font-size:2.5rem;}
-header p{margin-top:10px;color:#d1fae5;}
+#particles{position:fixed;inset:0;z-index:-1;overflow:hidden;}
+.particle{position:absolute;width:4px;height:4px;background:var(--primary);opacity:.3;border-radius:50%;animation:float 20s linear infinite;}
+@keyframes float{from{transform:translateY(100vh)} to{transform:translateY(-10vh)}}
 
-/* NAV */
-nav{
-    background:#052e16;
-    padding:12px;
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    position:sticky;
-    top:0;
-}
-nav a{
-    color:#ecfdf5;
-    text-decoration:none;
-    font-weight:500;
-}
-nav a:hover{color:#86efac;}
+header{position:fixed;width:100%;padding:25px 60px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:var(--glass);border-bottom:1px solid rgba(0,0,0,0.08);z-index:1000;box-shadow:0 8px 20px rgba(0,0,0,0.05);}
+header h2{font-family:'Playfair Display',serif;color:var(--primary);letter-spacing:3px;font-size:28px;}
 
-/* SECTION */
-section{
-    padding:70px 20px;
-    max-width:1100px;
-    margin:auto;
-}
-.center{text-align:center;}
-h2{font-size:2rem;margin-bottom:10px;}
-p.muted{color:var(--muted);}
+.glass-btn{padding:14px 30px;border-radius:50px;border:1px solid rgba(0,0,0,0.1);background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;font-weight:600;cursor:pointer;transition:.3s;box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+.glass-btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,0.2);}
 
-/* SERVICES */
-.services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-    margin-top:40px;
-}
-.card{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 8px 18px rgba(0,0,0,.08);
-}
-.card h3{margin-bottom:8px;}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;position:relative;overflow:hidden;}
+.hero h1{font-family:'Playfair Display',serif;font-size:64px;max-width:900px;line-height:1.2;letter-spacing:1px;}
+.hero p{margin-top:20px;color:var(--text-light);font-size:20px;}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,0.2),transparent 70%);pointer-events:none;}
 
-/* FLOATING BUTTONS */
-.fab{
-    position:fixed;
-    right:20px;
-    padding:14px 18px;
-    border-radius:30px;
-    color:white;
-    font-weight:600;
-    text-decoration:none;
-    box-shadow:0 8px 18px rgba(0,0,0,.3);
-    z-index:999;
-}
-.call{
-    bottom:90px;
-    background:#0f766e;
-}
-.whatsapp{
-    bottom:30px;
-    background:#22c55e;
+.section{padding:140px 20px;max-width:1200px;margin:auto;text-align:center;}
+.section h2{font-family:'Playfair Display',serif;font-size:48px;margin-bottom:60px;color:var(--primary);position:relative;}
+.section h2::after{content:"";position:absolute;width:60px;height:4px;background:var(--secondary);bottom:-15px;left:50%;transform:translateX(-50%);border-radius:2px;}
+
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:50px;}
+.card{background:var(--glass);backdrop-filter:blur(25px);padding:50px;border-radius:25px;border:1px solid rgba(0,0,0,0.05);transition:.5s;box-shadow:0 12px 30px rgba(0,0,0,0.08);}
+.card:hover{transform:translateY(-15px);box-shadow:0 20px 40px rgba(0,0,0,0.12);border-color:var(--primary);}
+
+.contact-box{background:var(--glass);backdrop-filter:blur(25px);padding:60px;border-radius:25px;border:1px solid rgba(0,0,0,0.05);max-width:650px;margin:auto;box-shadow:0 15px 35px rgba(0,0,0,0.1);}
+input,textarea{width:100%;padding:16px;margin:12px 0;border-radius:12px;border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.7);color:var(--text-dark);font-size:16px;}
+
+.faq-item{background:var(--glass);backdrop-filter:blur(25px);padding:25px;border-radius:20px;margin:15px 0;border:1px solid rgba(0,0,0,0.05);cursor:pointer;transition:.3s;}
+.faq-item:hover{background:rgba(255,255,255,0.8);}
+.faq-answer{display:none;margin-top:10px;color:var(--text-light);text-align:center;}
+
+footer{padding:80px 20px;text-align:center;color:var(--text-light);font-size:15px;}
+
+.whatsapp{position:fixed;bottom:25px;right:25px;background:#25D366;color:white;padding:18px;border-radius:50%;text-decoration:none;font-size:24px;box-shadow:0 12px 25px rgba(0,0,0,0.2);}
+
+/* --- Mobile Responsiveness --- */
+@media(max-width:1024px){
+  .hero h1{font-size:48px;}
+  .hero p{font-size:18px;}
+  .card{padding:35px;}
+  .services{gap:30px;}
+  .section{padding:100px 15px;}
+  header{padding:20px 30px;}
 }
 
-/* FOOTER */
-footer{
-    background:#052e16;
-    color:#d1fae5;
-    text-align:center;
-    padding:20px;
-    margin-top:60px;
-    font-size:0.9rem;
+@media(max-width:768px){
+  .hero h1{font-size:36px;}
+  .hero p{font-size:16px;}
+  .services{grid-template-columns:1fr;gap:25px;}
+  .card{padding:30px;}
+  .section{padding:80px 10px;}
+  .faq-item{padding:20px;}
+  .contact-box{padding:40px;}
+  input,textarea{padding:14px;font-size:15px;}
+  .glass-btn{padding:12px 25px;font-size:15px;}
 }
+
+@media(max-width:480px){
+  .hero h1{font-size:28px;line-height:1.3;}
+  .hero p{font-size:14px;}
+  header h2{font-size:22px;}
+  .glass-btn{padding:10px 20px;font-size:14px;}
+  .contact-box{padding:25px;}
+  .faq-item{padding:15px;}
+}
+select{
+  width:100%;
+  padding:16px;
+  margin:12px 0;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.1);
+  background:rgba(255,255,255,0.7);
+  font-size:16px;
+}
+.smart{display:none;}
+.smart input,.smart select{margin-top:10px;}
 </style>
 </head>
-
 <body>
 
+<div class="loader"><div></div></div>
+<div id="particles"></div>
+
 <header>
-    <!-- SAMPLE LOGO IMAGE FROM BROWSER -->
-    <img 
-        src="https://i.ibb.co/nMRjSxkd/Whats-App-Image-2026-02-11-at-7-22-29-PM.jpg/300x300.png?text=Shiv+Enterprises"
-        alt="Shiv Enterprises Logo"
-        class="logo"
-    >
-    <h1>Shiv Enterprises</h1>
-    <p>KYC • Ticket Booking • Bill Payments • Farmer Applications</p>
+    <div class="logo-box">
+  <img src="https://i.ibb.co/nMRjSxkd/Whats-App-Image-2026-02-11-at-7-22-29-PM.jpg/300x300.png?text=Shiv+Enterprises" alt="Shiv Enterprises Logo">
+  <span>Shiv Enterprises</span>
+</div>
+
+<h2>Shiv Enterprises</h2>
+<button class="glass-btn" onclick="document.getElementById('contact').scrollIntoView()">Contact</button>
 </header>
 
-<nav>
-    <a href="#services">Services</a>
-    <a href="#agri">Agriculture</a>
-    <a href="#contact">Contact</a>
-    <a href="#location">Location</a>
-</nav>
-
-<section id="services">
-    <div class="center">
-        <h2>Digital Services</h2>
-        <p class="muted">All daily digital work handled properly</p>
-    </div>
-
-    <div class="services">
-        <div class="card">
-            <h3>KYC Services</h3>
-            <p>Aadhaar, PAN, and bank-related KYC services.</p>
-        </div>
-        <div class="card">
-            <h3>Ticket Booking</h3>
-            <p>Bus and travel ticket booking assistance.</p>
-        </div>
-        <div class="card">
-            <h3>Bill Payments</h3>
-            <p>Electricity, mobile, gas, DTH, and utility bills.</p>
-        </div>
-        <div class="card">
-            <h3>Online Forms</h3>
-            <p>Government schemes and online applications.</p>
-        </div>
-    </div>
+<section class="hero">
+<h1>KYC • Ticket Booking • Bill Payments • Farmer Applications</h1>
+<p>Premium Digital & Agricultiural Services</p>
+<button class="glass-btn">Explore Services</button>
 </section>
 
-<section id="agri">
-    <div class="center">
-        <h2>Agricultural Services</h2>
-        <p class="muted">ખેડૂતો માટેની ઓનલાઈન અરજી અને સહાય સેવાઓ</p>
-    </div>
-
-    <div class="services">
-        <div class="card">
-            <h3>i-Khedut Applications</h3>
-            <p>Assistance for fertilizer, equipment, and agriculture schemes.</p>
-        </div>
-        <div class="card">
-            <h3>Farmer Registrations</h3>
-            <p>Farmer ID, scheme registrations, and updates.</p>
-        </div>
-        <div class="card">
-            <h3>Subsidy Assistance</h3>
-            <p>Help with agriculture subsidy and benefit forms.</p>
-        </div>
-        <div class="card">
-            <h3>Land Record Services</h3>
-            <p>7/12 & 8A Land Record Extraction & Print Services.</p>
-        </div>
-    </div>
+<section class="section">
+<h2>Our Purpose</h2>
+<div class="services">
+<div class="card">
+<p>Our purpose is to make digital and agricultural services simple, fast, and accessible for everyone. We help individuals and farmers complete essential tasks like KYC, ticket booking, bill payments, government forms, and scheme applications accurately and without hassle.</p>
+</div>
+</div>
 </section>
 
-<section id="contact">
-    <div class="center">
-        <h2>Contact Details</h2>
-        <p class="muted">For any service, please contact or visit our shop</p>
-    </div>
-
-    <div class="services">
-        <div class="card">
-            <h3>Shop Holder</h3>
-            <p>Dhirendra Rameshchandra Nayani</p>
-        </div>
-        <div class="card">
-            <h3>Mobile Number</h3>
-            <p>8200373103</p>
-        </div>
-        <div class="card">
-            <h3>Email ID</h3>
-            <p>shiventerprises3103@gmail.com</p>
-        </div>
-    </div>
+<section class="section">
+<h2>Digital Services</h2>
+<div class="services">
+<div class="card"><b>Ration Card KYC:</b> e-KYC and verification assistance.</div>
+<div class="card"><b>Ticket Booking:</b> Bus and travel ticket booking assistance.</div>
+<div class="card"><b>Bill Payments:</b> Electricity, mobile, gas, DTH, and utility bills.</div>
+<div class="card"><b>Online Forms:</b> Government schemes and online applications.</div>
+<div class="card"><b>Printing Services:</b> Black & white and color Printing for documents and forms.</div>
+</div>
 </section>
 
-<section id="location">
-    <div class="center">
-        <h2>Shop Location</h2>
-        <p class="muted">Visit our shop during working hours</p>
-    </div>
+<section class="section">
+<h2>Agricultural Services</h2>
+<div class="services">
+<div class="card"><b>i-Khedut Applications:</b> Fertilizer, equipment, and agriculture schemes.</div>
+<div class="card"><b>Farmer Registrations:</b> Farmer ID & scheme registrations.</div>
+<div class="card"><b>Subsidy Assistance:</b> Agriculture subsidy and benefit forms.</div>
+<div class="card"><b>Land Record Services:</b> 7/12 & 8A Land Record Extraction & Print Services.</div>
+<div class="card"><b>PM-Kisan Services:</b> Registration, correction, e-KYC, and status checking.s</div>
+<div class="card"><b>PAN     card Services:</b> New application, correction, and PAN card-related assistance.</div>
 
-    <div class="services">
-        <div class="card">
-            <h3>Address</h3>
-            <p>Opp. Khambhla Road, MP chhabhaiya Complex, Kotda Jadodar, Nakhatrana, Kachchh 370605</p>
-            <p><strong>Timings:</strong> Monday – Friday | 8:00 AM to 8:00 PM</p>
-        </div>
+</div>
+</section>
+
+<section class="section">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item">
+<b>1. How can I book a ticket?</b>
+<div class="faq-answer">• You can book bus and travel tickets through our Digital Services section. Simply provide your details and preferred dates.</div>
+</div>
+<div class="faq-item">
+<b>2. How do I apply for government schemes?</b>
+<div class="faq-answer">• Our team assists with online forms and applications for various government schemes, ensuring all documentation is accurate.</div>
+</div>
+<div class="faq-item">
+<b>3. What are the operating hours?</b>
+<div class="faq-answer">• Our services are available Monday to Friday from 8:00 AM to 8:00 PM.</div>
+</div>
+<div class="faq-item">
+<b>4. How do I contact you for assistance?</b>
+<div class="faq-answer">• You can reach us via mobile at +91 8200373103, email at Shiventerprises3103@gmail.com, or through WhatsApp.</div>
+</div>
+</section>
+
+<section class="section">
+  <h2>Why Choose Us</h2>
+  <div class="services">
+    <div class="card">
+      <h3>5+ Years</h3>
+      <p>Experience in digital and agricultural services</p>
     </div>
+    <div class="card">
+      <h3>1000+ Clients</h3>
+      <p>Successfully served with trust and accuracy</p>
+    </div>
+    <div class="card">
+      <h3>Reliable Support</h3>
+      <p>Quick assistance for everyday and government services</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="contact">
+  <h2>Contact Details</h2>
+
+  <div class="contact-box">
+    <b>Shop Holder:</b><p>Dhirendra Rameshchandra Nayani</p>
+    <b>Mobile:</b><p>8200373103</p>
+    <b>Email:</b><p>Shiventerprises3103@gmail.com</p>
+    <b>Address:</b>
+    <p>Opp. Khambhla Road, MP chhabhaiya Complex, Kotda Jadodar, Nakhatrana, Kachchh, Gujarat-370605</p>
+    <b>Timings:</b><p>Monday – Friday | 8:00 AM to 8:00 PM</p>
+
+    <!-- WHATSAPP FORM START -->
+    <form id="whatsappForm">
+
+      <input type="text" id="waName" placeholder="Full Name" required>
+
+      <select id="waService" required>
+        <option value="">Select Service</option>
+        <option value="Ticket">Ticket Booking</option>
+        <option value="Bill">Bill Payments</option>
+        <option value="Agri">Agricultural Services</option>
+      </select>
+
+      <!-- SMART FIELDS GO HERE (NEXT STEP) -->
+      <div id="smartFields" style="display:none;">
+
+    <!-- Ticket Booking -->
+  
+        <div class="smart ticket">
+
+        <select id="ticketType">
+        <option value="">Select Ticket Type</option>
+        <option value="Bus">Bus Ticket</option>
+        <option value="Train">Train Ticket</option>
+    </select>
+
+  <!-- Bus Travels -->
+        <select id="busTravel" style="display:none;">
+        <option value="">Select Bus Travel</option>
+        <option>KKP Travels</option>
+        <option>Ramani Travels</option>
+        <option>HK Travels</option>
+        </select>
+
+        <input type="date" id="travelDate">
+        <input type="text" id="fromLocation" placeholder="From">
+        <input type="text" id="toLocation" placeholder="To">
+  </div>
+
+  <!-- Bill Payments -->
+  <div class="smart bill">
+    <input type="text" id="consumerNo" placeholder="Consumer / Account Number">
+  </div>
+
+  <!-- Agriculture -->
+  <div class="smart agri">
+    <select id="agriType">
+      <option value="">Select Scheme</option>
+      <option>i-Khedut</option>
+      <option>Farmer ID</option>
+      <option>Subsidy</option>
+    </select>
+  </div>
+
+</div>
+      <textarea id="waMessage" placeholder="Your Message" required></textarea>
+
+      <button class="glass-btn" type="submit">Send on WhatsApp</button>
+    </form>
+    <!-- WHATSAPP FORM END -->
+
+  </div>
 </section>
 
 <footer>
-    <p>We provide application assistance only. Approval depends on government rules.</p>
-    <p>© 2026 Shiv Digital & Agricultural Services</p>
+<p>© 2026 Shiv Enterprises | Premium Digital & Agricultural Services</p>
 </footer>
 
-<!-- FLOATING BUTTONS -->
-<a href="tel:8200373103" class="fab call">📞 Call</a>
-<a href="https://wa.me/918200373103" class="fab whatsapp">💬 WhatsApp</a>
+<a href="https://wa.me/918200373103" class="whatsapp">💬</a>
+
+<script>
+  const serviceSelect = document.getElementById("waService");
+const smartFields = document.getElementById("smartFields");
+
+const ticketBox = document.querySelector(".ticket");
+const billBox = document.querySelector(".bill");
+const agriBox = document.querySelector(".agri");
+
+serviceSelect.addEventListener("change", () => {
+  smartFields.style.display = "none";
+  ticketBox.style.display = billBox.style.display =
+  kycBox.style.display = agriBox.style.display = "none";
+
+  if(serviceSelect.value === "Ticket"){
+    smartFields.style.display = "block";
+    ticketBox.style.display = "block";
+  }
+  if(serviceSelect.value === "Bill"){
+    smartFields.style.display = "block";
+    billBox.style.display = "block";
+  }
+  if(serviceSelect.value === "Agri"){
+    smartFields.style.display = "block";
+    agriBox.style.display = "block";
+  }
+});
+
+// Ticket booking bus/train
+const ticketType = document.getElementById("ticketType");
+const busTravel = document.getElementById("busTravel");
+
+ticketType.addEventListener("change", () => {
+  if(ticketType.value === "Bus"){
+    busTravel.style.display = "block";
+  } else {
+    busTravel.style.display = "none";
+    busTravel.value = "";
+  }
+});
+
+// Loader
+document.addEventListener("DOMContentLoaded",()=>{
+  document.querySelector(".loader").style.display="none";
+});
+
+// GSAP Animations
+gsap.from(".hero h1",{y:60,opacity:0,duration:1});
+gsap.from(".hero p",{y:40,opacity:0,duration:1,delay:.4});
+gsap.utils.toArray(".card").forEach(card=>{
+  gsap.from(card,{scrollTrigger:card,y:60,opacity:0,duration:1});
+});
+
+// Floating Particles
+for(let i=0;i<50;i++){
+  let p=document.createElement("div");
+  p.classList.add("particle");
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDuration=(15+Math.random()*15)+"s";
+  document.getElementById("particles").appendChild(p);
+}
+
+// FAQ Toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    let ans = item.querySelector('.faq-answer');
+    ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+  });
+});
+// WhatsApp Form Submission
+document.getElementById("whatsappForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("waName").value;
+  const service = document.getElementById("waService").value;
+  const message = document.getElementById("waMessage").value;
+
+  const ticketType = document.getElementById("ticketType")?.value || "";
+  const busTravel = document.getElementById("busTravel")?.value || "";
+  const date = document.getElementById("travelDate")?.value || "";
+  const from = document.getElementById("fromLocation")?.value || "";
+  const to = document.getElementById("toLocation")?.value || "";
+
+  let extra = "";
+
+  if(service === "Ticket"){
+    extra =
+      `Ticket Type: ${ticketType}%0A` +
+      `Bus Travel: ${busTravel || "N/A"}%0A` +
+      `Date: ${date}%0A` +
+      `From: ${from}%0A` +
+      `To: ${to}`;
+  }
+
+  const text = `Hello Shiv Enterprises,%0A
+Name: ${name}%0A
+Service: ${service}%0A
+${extra}%0A
+Message: ${message}`;
+
+  window.open(`https://wa.me/918200373103?text=${text}`, "_blank");
+});
+
+</script>
 
 </body>
 </html>
