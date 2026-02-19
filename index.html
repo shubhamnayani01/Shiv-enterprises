@@ -298,22 +298,26 @@ const agriBox = document.querySelector(".agri");
 
 serviceSelect.addEventListener("change", () => {
   smartFields.style.display = "none";
-  ticketBox.style.display = billBox.style.display =
-  kycBox.style.display = agriBox.style.display = "none";
+  ticketBox.style.display = "none";
+  billBox.style.display = "none";
+  agriBox.style.display = "none";
 
   if(serviceSelect.value === "Ticket"){
     smartFields.style.display = "block";
     ticketBox.style.display = "block";
   }
+
   if(serviceSelect.value === "Bill"){
     smartFields.style.display = "block";
     billBox.style.display = "block";
   }
+
   if(serviceSelect.value === "Agri"){
     smartFields.style.display = "block";
     agriBox.style.display = "block";
   }
 });
+
 
 // Ticket booking bus/train
 const ticketType = document.getElementById("ticketType");
@@ -394,3 +398,4 @@ Message: ${message}`;
 
 </body>
 </html>
+
